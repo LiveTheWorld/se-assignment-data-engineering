@@ -1,0 +1,66 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+.env/
+
+# Environment variables
+.env
+*.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Output files (candidates will generate these)
+chats.csv
+messages.csv
+processed_chats.csv
+
+# Test results
+test_report.json
+
+# Logs
+*.log
+
+# HIRING TEAM MATERIALS - DO NOT SHARE WITH CANDIDATES
+hiring_team/
+
+# DATABASE EXTRACTION TOOLS - DO NOT SHARE WITH CANDIDATES
+db_extraction/ 
