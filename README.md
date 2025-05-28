@@ -158,9 +158,9 @@ Your solution will be evaluated on:
 
 ## Time Expectation
 
-This assignment should take **4-8 hours** to complete, depending on your experience level:
+This assignment should take **2-6 hours** to complete, depending on your experience level:
 
-- **Junior (0-2 years)**: 4-8 hours
+- **Junior (0-2 years)**: 4-6 hours
 - **Mid-level (2-5 years)**: 2-5 hours  
 
 **Why it takes time:**
