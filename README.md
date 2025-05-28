@@ -17,15 +17,63 @@ Create a Python script called `chat_pipeline.py` that:
 2. Extracts and normalizes the embedded message logs from the `conversation_log` field
 3. Outputs two CSV files: `chats.csv` and `messages.csv`
 
+## How to Create the Messages Table
+
+The key challenge is **flattening the conversation log** from each chat into individual message rows:
+
+### Step-by-Step Process:
+
+1. **Parse the JSON**: Each chat has a `conversation_log` field containing a JSON string with an array of messages
+2. **Extract each message**: Loop through the message array and create one row per message
+3. **Inherit chat data**: Each message row gets the chat-level fields (chat_id, language, sentiment, etc.)
+4. **Add message-specific data**: Include the message content, role (user/assistant), and message ID
+5. **Handle missing fields**: Fill in empty values for fields not available in the source data
+
+### Example Transformation:
+
+**Input (1 chat row):**
+```
+chat_id: "chat_123"
+language: "en"
+conversation_log: '[{"id":"msg_1","role":"user","content":"Hello"},{"id":"msg_2","role":"assistant","content":"Hi there!"}]'
+```
+
+**Output (2 message rows):**
+```
+chatId,language,role,content,messageId,...
+chat_123,en,user,Hello,msg_1,...
+chat_123,en,assistant,Hi there!,msg_2,...
+```
+
+### Key Points:
+- **One chat → Multiple messages**: A single chat with 5 messages becomes 5 rows in messages.csv
+- **Shared data**: All messages from the same chat share the same chat-level information
+- **Message-specific fields**: Only messages have `role`, `content`, and `messageId` fields
+- **JSON parsing**: Use `json.loads()` to parse the `conversation_log` string into a Python list
+
 ## Getting Started
 
-1. **Fork this repository**
-2. **Clone your fork locally**
-3. **Install dependencies:** `pip install -r requirements.txt`
-4. **Examine the data:** Look at `source_chat_data.csv` to understand the structure
-5. **Create your solution:** Build `chat_pipeline.py`
-6. **Test your solution:** Run `python chat_pipeline.py`
-7. **Create a pull request** when ready
+1. **Clone or download this repository**
+2. **Install dependencies:** `pip install -r requirements.txt`
+3. **Examine the data:** Look at `source_chat_data.csv` to understand the structure
+4. **Create your solution:** Build `chat_pipeline.py`
+5. **Test your solution:** Run `python chat_pipeline.py`
+6. **Submit via email** when ready (see submission instructions below)
+
+## Submission Instructions
+
+When you're ready to submit your solution, please email it to the address provided in your assignment email with:
+
+**Attachments:**
+- Your Python script (`chat_pipeline.py`)
+- Generated output files (`chats.csv` and `messages.csv`)
+- Any additional files you created (if applicable)
+
+**Email Body:** Please include a brief description of:
+- Your approach to solving the problem
+- Any challenges you encountered and how you solved them
+- Instructions for running your script (if not standard)
+- Any assumptions you made
 
 ## Available Data
 
@@ -174,6 +222,6 @@ Focus on getting a **working solution first**, then improve code quality and add
 
 ## Questions?
 
-If you have questions about the requirements, feel free to ask in your pull request or reach out to the hiring team.
+If you have questions about the requirements, feel free to reach out to the email address provided in your assignment instructions.
 
 Good luck! 🚀 
