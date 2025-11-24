@@ -64,3 +64,6 @@ hiring_team/
 
 # DATABASE EXTRACTION TOOLS - DO NOT SHARE WITH CANDIDATES
 db_extraction/ 
+submission_kevin/
+.gitignore
+instructions_evaluation_prompt.txt
